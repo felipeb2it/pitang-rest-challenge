@@ -57,6 +57,14 @@ public class CarService {
     	carRepository.deleteById(id);
     }
     
+    /**
+     * Atualiza os detalhes de um carro existente.
+     * 
+     * @param id O ID do carro a ser atualizado.
+     * @param carDto Detalhes do carro para atualização.
+     * @return Optional A entidade Car atualizada caso exista.
+     * @throws EntityNotFoundException Se nenhum carro com o ID fornecido for encontrado.
+     */
     public Optional<CarEntity> updateUser(Long id, CarDTO carDto) {
         return carRepository.findById(id).map(car -> {
         	Optional.ofNullable(carDto.color()).ifPresent(car::setColor);
