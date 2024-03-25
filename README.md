@@ -85,25 +85,25 @@ Desafio técnico para testar a proficiência dos canditados em projetos de APIs 
 - Java 21 ou superior
 - Maven
 - Spring Boot
-- Banco de dados H2(in-memmory)I
+- Banco de dados H2(in-memmory)
 
-## Configuração.
+## Configuração
 
 1. **Clone o repositório**:
 
    ```bash
    git clone [URL_DO_REPOSITÓRIO]
    cd [NOME_DO_PROJETO]]
-   ```.
+   ```
 
-## Construção e Execuçãoo
+## Construção e Execução
 
 Instruções passo a passo para construir e executar o projeto.
 
 1. **Build do projeto com Maven**:
 
    ```bash
-   mvn clean installl
+   mvn clean install
    ````
 
 2. **Executar a aplicação Spring Boot**:
