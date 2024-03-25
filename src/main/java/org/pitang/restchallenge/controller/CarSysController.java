@@ -27,6 +27,11 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.validation.Valid;
 
+
+/**
+ * Controller para operações relacionadas a usuários.
+ * Provê endpoints para CRUD de carros no sistema.
+ */
 @RestController
 @RequestMapping("/api")
 public class CarSysController {
@@ -69,6 +74,12 @@ public class CarSysController {
     	return ResponseEntity.ok(userService.findAllUsers());
     }
     
+    /**
+     * Cria um novo usuário no sistema.
+     * 
+     * @param userDto Objeto DTO contendo informações do usuario a ser criado.
+     * @return ResponseEntity com o usuário criado e o status HTTP.
+     */
     @PostMapping("/users")
     public ResponseEntity<?> createUser(@RequestBody @Valid UserDTO userDto){
     	if(userService.findByLoginAndCheck(userDto.login())) {

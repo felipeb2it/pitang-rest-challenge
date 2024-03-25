@@ -15,6 +15,11 @@ import org.pitang.restchallenge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * Serviço para gerenciamento de operações de usuários.
+ * Encapsula a lógica de negócio relacionada a usuários.
+ */
 @Service
 public class UserService {
 	
@@ -25,6 +30,13 @@ public class UserService {
         return userRepository.findAll();
     }
     
+    
+    /**
+     * Cria um novo usuário no repositório.
+     * 
+     * @param userDto Objeto usuário a ser persistido.
+     * @return O usuário persistido.
+     */
     public UserEntity createUser(UserDTO userDto) {
     	UserEntity user = new UserEntity();
     	user.setFirstName(userDto.firstName());
