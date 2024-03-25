@@ -68,7 +68,11 @@ public class CarSysController {
         return jwt;
     }
 	
-	
+    /**
+     * Endpoint para listar todos os usuários cadastrados no sistema.
+     * 
+     * @return Uma ResponseEntity contendo uma lista de usuários e o status HTTP OK.
+     */
     @GetMapping("/users")
     public ResponseEntity<List<UserEntity>> users() {
     	return ResponseEntity.ok(userService.findAllUsers());

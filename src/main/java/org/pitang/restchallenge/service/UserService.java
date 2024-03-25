@@ -26,6 +26,12 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	
+    /**
+     * Recupera uma lista de todos os usuários cadastrados no sistema.
+     * 
+     * @return Uma lista de entidades de usuário.
+     */
     public List<UserEntity> findAllUsers() {
         return userRepository.findAll();
     }
