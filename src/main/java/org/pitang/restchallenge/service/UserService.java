@@ -68,6 +68,11 @@ public class UserService {
         return userRepository.findById(id);
     }
     
+    /**
+     * Deleta um usuário pelo seu ID.
+     *
+     * @param id O ID do usuário a ser deletado.
+     */
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }

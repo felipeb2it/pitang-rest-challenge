@@ -100,8 +100,14 @@ public class CarSysController {
                  .orElseGet(() -> ResponseEntity.notFound().build());
     }
     
+    /**
+     * Endpoint para deletar um usuário pelo ID.
+     *
+     * @param id O ID do usuário a ser deletado.
+     * @return ResponseEntity com status OK se o usuário for deletado com sucesso.
+     */
     @DeleteMapping("/users/{id}")
-    public BodyBuilder removeUser(@PathVariable("id") long id) {
+    public BodyBuilder deleteUser(@PathVariable("id") long id) {
     	userService.deleteUser(id);
     	return ResponseEntity.ok();
     }

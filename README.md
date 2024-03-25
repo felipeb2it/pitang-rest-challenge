@@ -21,7 +21,7 @@ Este documento detalha as estórias de usuário desenvolvidas para o desafio de 
 #### Critérios de Aceitação:
 - Permissão para atualizar informações pessoais.
 
-### 3. Exclusão de Conta
+### 3. Exclusão de Conta do usuário
 **Como** usuário não autenticado,  
 **Quero** excluir minha conta,  
 **Para** remover minhas informações do sistema.
