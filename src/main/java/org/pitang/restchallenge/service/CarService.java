@@ -53,7 +53,7 @@ public class CarService {
      * @param id O ID do carro a ser removido.
      * @throws EntityNotFoundException Se nenhum carro com o ID fornecido for encontrado.
      */
-    public void deleteUser(Long id) {
+    public void deleteCar(Long id) {
     	carRepository.deleteById(id);
     }
     
@@ -65,7 +65,7 @@ public class CarService {
      * @return Optional A entidade Car atualizada caso exista.
      * @throws EntityNotFoundException Se nenhum carro com o ID fornecido for encontrado.
      */
-    public Optional<CarEntity> updateUser(Long id, CarDTO carDto) {
+    public Optional<CarEntity> updateCar(Long id, CarDTO carDto) {
         return carRepository.findById(id).map(car -> {
         	Optional.ofNullable(carDto.color()).ifPresent(car::setColor);
         	Optional.ofNullable(carDto.licensePlate()).ifPresent(car::setLicensePlate);

@@ -11,9 +11,9 @@ import org.pitang.restchallenge.dto.UserDTO;
 import org.pitang.restchallenge.model.UserEntity;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +41,8 @@ public class CarSysController {
 	
 	record JwtResponse(String token) {}
 	
-	private final String secretKey = "secretKeysecretKeysecretKeysecretKey"; // Chave secreta com tamanho apropriado para o algoritmo
+	@Value("${pitang.jwt.secret}")
+	private String secretKey;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDto loginRequest) {
@@ -111,9 +112,9 @@ public class CarSysController {
      * @return ResponseEntity com status OK se o usuário for deletado com sucesso.
      */
     @DeleteMapping("/users/{id}")
-    public BodyBuilder deleteUser(@PathVariable("id") long id) {
+    public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
     	userService.deleteUser(id);
-    	return ResponseEntity.ok();
+    	return ResponseEntity.ok().build();
     }
     
     

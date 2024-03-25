@@ -9,7 +9,6 @@ import org.pitang.restchallenge.service.CarService;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,9 +76,9 @@ public class CarController {
 	 * @return BodyBuilder Uma resposta vazia com status HTTP OK se o carro for deletado com sucesso.
 	*/
     @DeleteMapping("/cars/{id}")
-    public BodyBuilder deleteCar(@PathVariable("id") long id) {
-    	carService.deleteUser(id);
-    	return ResponseEntity.ok();
+    public ResponseEntity<?> deleteCar(@PathVariable("id") long id) {
+    	carService.deleteCar(id);
+    	return ResponseEntity.ok().build();
     }
     
     /**
@@ -91,7 +90,7 @@ public class CarController {
      */
     @PutMapping("/cars/{id}")
     public ResponseEntity<CarEntity> updateCar(@PathVariable Long id, @RequestBody CarDTO carDto) {
-    	var updatedCar =  carService.updateUser(id, carDto);
+    	var updatedCar =  carService.updateCar(id, carDto);
     	return updatedCar.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

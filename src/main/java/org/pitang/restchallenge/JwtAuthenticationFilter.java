@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.crypto.SecretKey;
 
 import org.pitang.restchallenge.dto.ErrorMessagesDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +27,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final String secretKey = "secretKeysecretKeysecretKeysecretKey";
+	@Value("${pitang.jwt.secret}")
+    private String secretKey;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
