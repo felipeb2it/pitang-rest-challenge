@@ -47,6 +47,12 @@ public class CarService {
         return carRepository.findById(id);
     }
     
+    /**
+     * Remove um carro do banco de dados.
+     * 
+     * @param id O ID do carro a ser removido.
+     * @throws EntityNotFoundException Se nenhum carro com o ID fornecido for encontrado.
+     */
     public void deleteUser(Long id) {
     	carRepository.deleteById(id);
     }

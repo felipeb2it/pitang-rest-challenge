@@ -70,8 +70,14 @@ public class CarController {
                  .orElseGet(() -> ResponseEntity.notFound().build());
     }
     
+    /**
+     * Endpoint para deletar um carro.
+     * 
+     * @param id O ID do carro a ser deletado.
+	 * @return BodyBuilder Uma resposta vazia com status HTTP OK se o carro for deletado com sucesso.
+	*/
     @DeleteMapping("/cars/{id}")
-    public BodyBuilder removeCar(@PathVariable("id") long id) {
+    public BodyBuilder deleteCar(@PathVariable("id") long id) {
     	carService.deleteUser(id);
     	return ResponseEntity.ok();
     }
