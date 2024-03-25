@@ -106,6 +106,14 @@ public class CarSysController {
     	return ResponseEntity.ok();
     }
     
+    
+    /**
+     * Atualiza dados do usuário no sistema.
+     * 
+     * @param id Objeto do usuário a ser atualizado.
+     * @param userDto Objeto do usuário a ser atualizado.
+     * @return ResponseEntity com o usuário atualizado e o status HTTP.
+     */
     @PutMapping("/users/{id}")
     public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserDTO userDto) {
     	var updatedUser =  userService.updateUser(id, userDto);

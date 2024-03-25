@@ -72,6 +72,13 @@ public class UserService {
         userRepository.deleteById(id);
     }
     
+    /**
+     * Atualiza dados do usuário no repositório.
+     * 
+     * @param id Objeto do usuário a ser atualizado.
+     * @param userDto Objeto do usuário a ser atualizado.
+     * @return Optional com o usuário atualizado.
+     */
     public Optional<UserEntity> updateUser(Long id, UserDTO userDto) {
         return userRepository.findById(id).map(user -> {
         	Optional.ofNullable(userDto.firstName()).ifPresent(user::setFirstName);

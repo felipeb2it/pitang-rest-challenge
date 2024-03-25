@@ -11,7 +11,6 @@ Este documento detalha as estórias de usuário desenvolvidas para o desafio de 
 
 #### Critérios de Aceitação:
 - Validação dos dados de entrada.
-- Criptografia de senha.
 - Possibilidade de registrar um ou mais carros.
 
 ### 2. Atualização de Perfil de Usuário
