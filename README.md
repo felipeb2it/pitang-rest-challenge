@@ -94,7 +94,7 @@ Desafio técnico para testar a proficiência dos canditados em projetos de APIs 
    ```bashh
    git clone [URL_DO_REPOSITÓRIO]
    cd [NOME_DO_PROJETO]
-   ``.
+   ```.
 
 ## Construção e Execuçãoo
 
@@ -104,13 +104,13 @@ Instruções passo a passo para construir e executar o projeto.
 
    ```bash
    mvn clean installl
-   ```
+   ````
 
 2. **Executar a aplicação Spring Boot**:
 
    ```bash
    mvn -boot:runnspring
-   ```
+   ````
 
 ## Deploy
 
@@ -125,7 +125,7 @@ Como executar os testes automatizados para este projeto.
 
 ```bash
 mvn testt
-```
+````
 
 ## Executando com Dockerr
 
@@ -135,13 +135,13 @@ Para construir e executar o projeto dentro de um container Docker, siga estas et
 
    ```bash
    docker build -t <nome-da-imagem> .
-   ```
+   ````
 
 2. **Execute o container Docker**:
 
    ```bash
    docker run -p <porta-host>:8080 <nome-da-imagem>
-   ```
+   ````
 
    Substitua `<nome-da-imagem>` pelo nome que deseja dar à sua imagem Docker e `<porta-host>` pela porta em que deseja acessar a aplicação no seu sistema host.
 
