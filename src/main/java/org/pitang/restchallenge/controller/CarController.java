@@ -37,7 +37,11 @@ public class CarController {
     	return ResponseEntity.ok(userService.findProjectedUserByLogin(login).get());
     }
 	
-	
+    /**
+     * Endpoint para listar todos os carros.
+     * 
+     * @return Uma lista de carros.
+     */
     @GetMapping("/cars")
     public ResponseEntity<List<CarEntity>> cars() {
     	return ResponseEntity.ok(carService.findAllCars());

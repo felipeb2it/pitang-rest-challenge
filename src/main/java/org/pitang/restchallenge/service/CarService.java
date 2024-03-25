@@ -16,6 +16,11 @@ public class CarService {
 	@Autowired
 	private CarRepository carRepository;
 	
+    /**
+     * Lista todos os carros presentes no banco de dados.
+     * 
+     * @return Uma lista de entidades Car.
+     */
     public List<CarEntity> findAllCars() {
         return carRepository.findAll();
     }
