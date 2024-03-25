@@ -1,4 +1,4 @@
-# Estórias de Usuário - Sistema de Usuários e Carros API RESTful
+# Estórias de Usuário - Pitang API RESTful Desafio Técnico
 
 Este documento detalha as estórias de usuário desenvolvidas para o desafio de criação de uma API RESTful para um sistema de usuários e carros.
 
@@ -75,5 +75,87 @@ Este documento detalha as estórias de usuário desenvolvidas para o desafio de 
 - Fornecimento dos novos detalhes do carro.
 
 
-## Observações Finais
+
+# Pitang API RESTful Desafio Técnico
+
+Desafio técnico para testar a proficiência dos canditados em projetos de APIs REST
+
+## Pré-requisitos
+
+- Java 21 ou superior
+- Maven
+- Spring Boot
+- Banco de dados H2(in-memmory)I
+
+## Configuração.
+
+1. **Clone o repositório**:
+
+   ```bashh
+   git clone [URL_DO_REPOSITÓRIO]
+   cd [NOME_DO_PROJETO]
+   ``.
+
+## Construção e Execuçãoo
+
+Instruções passo a passo para construir e executar o projeto.
+
+1. **Build do projeto com Maven**:
+
+   ```bash
+   mvn clean installl
+   ```
+
+2. **Executar a aplicação Spring Boot**:
+
+   ```bash
+   mvn -boot:runnspring
+   ```
+
+## Deploy
+
+Instruções sobre como realizar o deploy do projeto em um ambiente de produção ou de desenvolvimento.
+
+- **Deploy no Heroku**: Descreva os passos para configurar e realizar o deploy no Heroku, se aplicável.
+- **Deploy em outros ambientes**: Forneça instruções específicas para outros ambientes de hospedagem, como AWS, Digital Ocean, etc.
+
+## Testes
+
+Como executar os testes automatizados para este projeto.
+
+```bash
+mvn testt
+```
+
+## Executando com Dockerr
+
+Para construir e executar o projeto dentro de um container Docker, siga estas etapas:
+
+1. **Construa a imagem Docker**:
+
+   ```bash
+   docker build -t <nome-da-imagem> .
+   ```
+
+2. **Execute o container Docker**:
+
+   ```bash
+   docker run -p <porta-host>:8080 <nome-da-imagem>
+   ```
+
+   Substitua `<nome-da-imagem>` pelo nome que deseja dar à sua imagem Docker e `<porta-host>` pela porta em que deseja acessar a aplicação no seu sistema host.
+
+## Documentação da API
+
+Instruções sobre como acessar a documentação da API, se disponível. Se você estiver usando o Swagger, por exemplo, inclua o URL para acessar a UI do Swagger.
+
+```plaintext
+http://localhost:8080/swagger-ui.html
+```
+.
+
+## Licençaa
+
+Especifique a licença sob a qual o projeto é disponibilizado.
+
 

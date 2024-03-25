@@ -1,8 +1,10 @@
-package org.pitang.restchallenge.model;
+package org.pitang.restchallenge.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.pitang.restchallenge.model.CarEntity;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

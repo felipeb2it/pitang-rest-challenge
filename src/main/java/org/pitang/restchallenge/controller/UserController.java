@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
  */
 @RestController
 @RequestMapping("/api")
-public class CarSysController {
+public class UserController {
 	
 	@Autowired
 	private UserService userService;
@@ -57,13 +57,13 @@ public class CarSysController {
     }
     
     public String generateJwtToken(String username) {
-        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes()); // Gera uma SecretKey a partir da string de chave secreta
+        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
         String jwt = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + 3600000)) // Exemplo: expira em 1 hora
-                .signWith(key) // Usa a chave gerada
+                .setExpiration(new Date((new Date()).getTime() + 3600000))
+                .signWith(key)
                 .compact();
 
         return jwt;

@@ -34,7 +34,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(properties = "pitang.jwt.secret=secretKeysecretKeysecretKeysecretKey")
-public class CarSysControllerTest {
+public class UserControllerTest {
 
     private MockMvc mockMvc;
 
@@ -42,7 +42,7 @@ public class CarSysControllerTest {
     private UserService userService;
 
     @InjectMocks
-    private CarSysController carSysController;
+    private UserController carSysController;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 

@@ -3,8 +3,8 @@ package org.pitang.restchallenge.controller;
 import java.util.List;
 
 import org.pitang.restchallenge.dto.CarDTO;
+import org.pitang.restchallenge.dto.UserDetailResponse;
 import org.pitang.restchallenge.model.CarEntity;
-import org.pitang.restchallenge.model.UserDetailResponse;
 import org.pitang.restchallenge.service.CarService;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

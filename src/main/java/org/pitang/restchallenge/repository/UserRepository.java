@@ -2,7 +2,7 @@ package org.pitang.restchallenge.repository;
 
 import java.util.Optional;
 
-import org.pitang.restchallenge.model.UserDetailResponse;
+import org.pitang.restchallenge.dto.UserDetailResponse;
 import org.pitang.restchallenge.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
