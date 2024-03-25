@@ -12,11 +12,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf((csrf) -> csrf.disable())
         	.addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/signin", "/api/users/**").permitAll()
+                .requestMatchers("/api/signin", "/api/users/**", "/error").permitAll()
                 .anyRequest().authenticated()
             )
             .build();

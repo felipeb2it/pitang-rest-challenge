@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.pitang.restchallenge.dto.CarDTO;
 import org.pitang.restchallenge.model.CarEntity;
+import org.pitang.restchallenge.model.UserDetailResponse;
 import org.pitang.restchallenge.service.CarService;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class CarController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@GetMapping("/me")
+	public ResponseEntity<UserDetailResponse> user(Authentication authentication) {
+		String login = authentication.getName();
+    	return ResponseEntity.ok(userService.findProjectedUserByLogin(login).get());
+    }
+	
 	
     @GetMapping("/cars")
     public ResponseEntity<List<CarEntity>> cars() {

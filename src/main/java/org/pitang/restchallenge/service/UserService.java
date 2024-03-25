@@ -1,5 +1,6 @@
 package org.pitang.restchallenge.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,7 @@ import org.pitang.restchallenge.dto.CarDTO;
 import org.pitang.restchallenge.dto.LoginRequestDto;
 import org.pitang.restchallenge.dto.UserDTO;
 import org.pitang.restchallenge.model.CarEntity;
+import org.pitang.restchallenge.model.UserDetailResponse;
 import org.pitang.restchallenge.model.UserEntity;
 import org.pitang.restchallenge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,9 @@ public class UserService {
         	Optional.ofNullable(userDto.login()).ifPresent(user::setLogin);
         	Optional.ofNullable(userDto.password()).ifPresent(user::setPassword);
         	Optional.ofNullable(userDto.phone()).ifPresent(user::setPhone);
+        	
+        	Optional.ofNullable(userDto.phone()).ifPresent(user::setPhone);
+        	Optional.ofNullable(userDto.phone()).ifPresent(user::setPhone);
             return userRepository.save(user);
         });
     }
@@ -75,8 +80,14 @@ public class UserService {
     	return userRepository.findByLogin(login);
     }
     
+    public Optional<UserDetailResponse> findProjectedUserByLogin(String login) {
+    	return userRepository.findProjectedByLogin(login);
+    }
+    
     public boolean findUserByLoginAndCheckPass(LoginRequestDto login) {
     	return userRepository.findByLogin(login.login()).map(user -> {
+    		user.setLastLogin(LocalDateTime.now());
+    		userRepository.save(user);
     		return user.getPassword().equals(login.password())? true : false; 
     	}).orElse(false);
     }

@@ -1,7 +1,12 @@
 package org.pitang.restchallenge.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -18,11 +23,12 @@ import jakarta.persistence.Table;
 public class UserEntity {
 	
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    
 	private String firstName;
 	private String lastName;
-	
 	private String email;
 	private LocalDate birthday;
 	private String phone;
@@ -31,6 +37,13 @@ public class UserEntity {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CarEntity> cars;
+	
+	@JsonIgnore
+    @CreatedDate
+	private LocalDate createdAt;
+    
+	@JsonIgnore
+    private LocalDateTime lastLogin;
 	
 	
 	public Long getId() {
@@ -87,6 +100,17 @@ public class UserEntity {
 	public void setCars(List<CarEntity> cars) {
 		this.cars = cars;
 	}
-
+	public LocalDate getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(LocalDate createdAt) {
+		this.createdAt = createdAt;
+	}
+	public LocalDateTime getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(LocalDateTime lastLogin) {
+		this.lastLogin = lastLogin;
+	}
 	
 }

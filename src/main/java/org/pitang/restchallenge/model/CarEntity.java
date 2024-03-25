@@ -16,6 +16,7 @@ import jakarta.persistence.Table;
 public class CarEntity {
 	
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     
@@ -66,8 +67,5 @@ public class CarEntity {
 	public void setUser(UserEntity user) {
 		this.user = user;
 	}
-
-	
-
 	
 }

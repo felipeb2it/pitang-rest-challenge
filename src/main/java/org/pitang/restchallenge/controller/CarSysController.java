@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -32,6 +33,8 @@ public class CarSysController {
 	
 	@Autowired
 	private UserService userService;
+	
+	record JwtResponse(String token) {}
 	
 	private final String secretKey = "secretKeysecretKeysecretKeysecretKey"; // Chave secreta com tamanho apropriado para o algoritmo
 
@@ -67,7 +70,7 @@ public class CarSysController {
     }
     
     @PostMapping("/users")
-    public ResponseEntity<?> createUser(@RequestBody UserDTO userDto){
+    public ResponseEntity<?> createUser(@RequestBody @Valid UserDTO userDto){
     	if(userService.findByLoginAndCheck(userDto.login())) {
     		ErrorMessagesDto error = new ErrorMessagesDto("Login already exists", HttpStatus.BAD_REQUEST.value());
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
@@ -98,21 +101,7 @@ public class CarSysController {
     	return updatedUser.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-    
-    // Classe interna para resposta
-    static class JwtResponse {
-        private String token;
-
-        public JwtResponse(String token) {
-            this.token = token;
-        }
-
-        // Getter
-        public String getToken() {
-            return token;
-        }
-    }
-    
+   
 
     
 
