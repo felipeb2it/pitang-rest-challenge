@@ -92,8 +92,8 @@ Desafio técnico para testar a proficiência dos canditados em projetos de APIs 
 1. **Clone o repositório**:
 
    ```bashh
-   git clone [URL_DO_REPOSITÓRIO]
-   cd [NOME_DO_PROJETO]
+   git clone [URL_DO_REPOSITÓRIO]]
+   cd [NOME_DO_PROJETO]]
    ```.
 
 ## Construção e Execuçãoo
