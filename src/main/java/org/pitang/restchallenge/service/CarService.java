@@ -25,6 +25,13 @@ public class CarService {
         return carRepository.findAll();
     }
     
+    /**
+     * Cria um novo carro no banco de dados.
+     * 
+     * @param carDto A entidade Car a ser criada.
+     * @param user O usuário ao qual o carro pertence.
+     * @return CarEntity A entidade Car criada.
+     */
     public CarEntity createCar(CarDTO carDto, UserEntity user) {
     	CarEntity car = new CarEntity();
     	car.setColor(carDto.color());

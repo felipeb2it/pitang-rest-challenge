@@ -47,11 +47,19 @@ public class CarController {
     	return ResponseEntity.ok(carService.findAllCars());
     }
     
+    
+    /**
+     * Endpoint para criar um novo carro.
+     * 
+     * @param carDto O carro a ser criado.
+     * @param authentication Dados de autenticação
+     * @return ResponseEntity do carro criado.
+     */
     @PostMapping("/cars")
-    public ResponseEntity<CarEntity> createCar(@RequestBody CarDTO userDto, Authentication authentication){
+    public ResponseEntity<CarEntity> createCar(@RequestBody CarDTO carDto, Authentication authentication){
     	String login = authentication.getName();
     	var user = userService.findUserByLogin(login);
-    	return ResponseEntity.ok(carService.createCar(userDto, user.get()));
+    	return ResponseEntity.ok(carService.createCar(carDto, user.get()));
     }
     
     @GetMapping("/cars/{id}")
