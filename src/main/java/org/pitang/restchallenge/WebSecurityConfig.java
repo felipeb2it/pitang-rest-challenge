@@ -16,7 +16,7 @@ public class WebSecurityConfig {
         return http.csrf((csrf) -> csrf.disable())
         	.addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/signin", "/api/users/**", "/error").permitAll()
+                .requestMatchers("/api/signin", "/api/users/**", "/error", "/swagger-ui/**", "/v3/**").permitAll()
                 .anyRequest().authenticated()
             )
             .build();

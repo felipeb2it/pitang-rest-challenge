@@ -124,7 +124,7 @@ Instruções sobre como realizar o deploy do projeto em um ambiente de produçã
 Como executar os testes automatizados para este projeto.
 
 ```bash
-mvn testt
+mvn test
 ````
 
 ## Executando com Dockerr
@@ -150,7 +150,7 @@ Para construir e executar o projeto dentro de um container Docker, siga estas et
 Instruções sobre como acessar a documentação da API, se disponível. Se você estiver usando o Swagger, por exemplo, inclua o URL para acessar a UI do Swagger.
 
 ```plaintext
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/swagger-ui/index.html
 ```
 .
 

@@ -44,7 +44,12 @@ public class CarService {
     }
     
     public Optional<CarEntity> findCarById(Long id) {
-        return carRepository.findById(id);
+    	Optional<CarEntity> carOp = carRepository.findById(id);
+    	carOp.ifPresent(car -> {
+    		car.setUseCount(car.getUseCount() + 1);
+    		carRepository.save(car);
+    	});
+    	return carOp;
     }
     
     /**
@@ -73,6 +78,12 @@ public class CarService {
         	Optional.ofNullable(carDto.year()).ifPresent(car::setYear);
         	return carRepository.save(car);
         });
+    }
+    
+    public void incrementUseCount(Long carId) {
+        Optional<CarEntity> car = carRepository.findById(carId);
+        car.get().setUseCount(car.get() .getUseCount()+ 1);
+        carRepository.save(car.get());
     }
     
 

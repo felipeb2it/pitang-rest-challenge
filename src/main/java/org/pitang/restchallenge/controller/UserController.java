@@ -1,5 +1,6 @@
 package org.pitang.restchallenge.controller;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.crypto.SecretKey;
 import org.pitang.restchallenge.dto.ErrorMessagesDto;
 import org.pitang.restchallenge.dto.LoginRequestDto;
 import org.pitang.restchallenge.dto.UserDTO;
+import org.pitang.restchallenge.model.CarEntity;
 import org.pitang.restchallenge.model.UserEntity;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,6 +132,20 @@ public class UserController {
     	var updatedUser =  userService.updateUser(id, userDto);
     	return updatedUser.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
+    
+    @GetMapping("/users/bonusOrder")
+    public ResponseEntity<List<UserEntity>> usersBonusOrdered() {
+    	List<UserEntity> users = userService.findAllUsers();
+    	
+    	users.sort(Comparator
+    	        .comparingInt((UserEntity u) -> u.getCars() != null ? u.getCars().stream().mapToInt(CarEntity::getUseCount).sum() : 0)
+    	        .reversed()
+    	        .thenComparing(UserEntity::getLogin));
+    	List<UserEntity> sortedUsers = users;
+    	
+    	return ResponseEntity.ok(sortedUsers);
     }
    
 

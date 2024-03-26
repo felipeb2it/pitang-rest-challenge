@@ -1,6 +1,8 @@
 package org.pitang.restchallenge.controller;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.pitang.restchallenge.dto.CarDTO;
 import org.pitang.restchallenge.dto.UserDetailResponse;
@@ -93,6 +95,19 @@ public class CarController {
     	var updatedCar =  carService.updateCar(id, carDto);
     	return updatedCar.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
+    
+    @GetMapping("/cars/bonusOrder")
+    public ResponseEntity<List<CarEntity>> carsBonusOrdered() {
+    	List<CarEntity> allCars = carService.findAllCars();
+    	
+    	List<CarEntity> sortedCars = allCars.stream()
+    	        .sorted(Comparator.comparingInt(CarEntity::getUseCount).reversed()
+    	                .thenComparing(CarEntity::getModel))
+    	        .collect(Collectors.toList());
+    	
+    	return ResponseEntity.ok(sortedCars);
     }
 
 }

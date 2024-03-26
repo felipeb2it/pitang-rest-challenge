@@ -30,7 +30,11 @@ public class CarEntity {
 	@JsonIgnore
 	private UserEntity user;
 	
+	@JsonIgnore
+	private Integer useCount = 0;
 	
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -67,5 +71,10 @@ public class CarEntity {
 	public void setUser(UserEntity user) {
 		this.user = user;
 	}
-	
+	public int getUseCount() {
+		return useCount;
+	}
+	public void setUseCount(Integer useCount) {
+		this.useCount = useCount;
+	}
 }
