@@ -139,7 +139,6 @@ mvn test
 
 ## Documentação da API
 
-Instruções sobre como acessar a documentação da API, se disponível. Se você estiver usando o Swagger, por exemplo, inclua o URL para acessar a UI do Swagger.
 
 ```plaintext
 http://localhost:8080/swagger-ui/index.html
