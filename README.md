@@ -76,6 +76,21 @@ Este documento detalha as estórias de usuário desenvolvidas para o desafio de 
 
 
 
+#SOLUÇÃO:
+
+Desenvolvi a solução utilizando o Spring-boot, seguindo as melhores práticas, principalmente os princípios do SOLID.
+O projeto ficou dividido em 3 camadas principais, sendo Controllers, Services e Repositories. As configurações, Handlers e Filters ficaram no package org.pitang.rest.challenge
+
+Nos DTOs utilizei o recurso "Record" do Java nos bodies de entrada de dados e para retorno de erros, eles permitem a criação de objetos de forma mais eficiente do que é feito com classes. Nas entities usei o JSONIgnore nos campos em que normarmente não são exibidos e quando necessári a exibição, utlilizei Projections nos Repositories.
+
+Utilizei anotações para validação de campos e um Validation Handler para customizar o retorno quando faltam campos no request ou são inválidos, desta forma consegui mais flexibilidade para controlar as validações de campos.
+
+Fiz os testes unitários dos Controllers, UserController e CarController. Neste projeto resolvi me dedicar a cumprir com todas as funcionalidades e por isso a cobertura de código esta baixa mas em grandes projetos é essencial termos uma cobertura de código de pelo menos 80%.
+
+Criei as estruturas pedidos no **Requisito extra**, a de usuários esta no UserController(método usersBonusOrdered) e a de carros esta no CarController(método carsBonusOrdered). Utilizei streams e Lambda e a solução implementa todas as regras do requisito.
+
+
+
 # Pitang API RESTful Desafio Técnico
 
 Desafio técnico para testar a proficiência dos canditados em projetos de APIs REST
