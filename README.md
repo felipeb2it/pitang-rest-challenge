@@ -127,12 +127,6 @@ Instruções passo a passo para construir e executar o projeto.
    mvn -boot:runnspring
    ````
 
-## Deploy
-
-Instruções sobre como realizar o deploy do projeto em um ambiente de produção ou de desenvolvimento.
-
-- **Deploy no Heroku**: Descreva os passos para configurar e realizar o deploy no Heroku, se aplicável.
-- **Deploy em outros ambientes**: Forneça instruções específicas para outros ambientes de hospedagem, como AWS, Digital Ocean, etc.
 
 ## Testes
 
@@ -142,23 +136,6 @@ Como executar os testes automatizados para este projeto.
 mvn test
 ````
 
-## Executando com Dockerr
-
-Para construir e executar o projeto dentro de um container Docker, siga estas etapas:
-
-1. **Construa a imagem Docker**:
-
-   ```bash
-   docker build -t <nome-da-imagem> .
-   ````
-
-2. **Execute o container Docker**:
-
-   ```bash
-   docker run -p <porta-host>:8080 <nome-da-imagem>
-   ````
-
-   Substitua `<nome-da-imagem>` pelo nome que deseja dar à sua imagem Docker e `<porta-host>` pela porta em que deseja acessar a aplicação no seu sistema host.
 
 ## Documentação da API
 
@@ -169,8 +146,6 @@ http://localhost:8080/swagger-ui/index.html
 ```
 .
 
-## Licençaa
 
-Especifique a licença sob a qual o projeto é disponibilizado.
 
 
