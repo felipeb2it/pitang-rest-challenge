@@ -97,7 +97,7 @@ Desafio técnico para testar a proficiência dos canditados em projetos de APIs 
 
 ## Pré-requisitos
 
-- Java 21 ou superior
+- Java 17 ou superior
 - Maven
 - Spring Boot
 - Banco de dados H2(in-memmory)
@@ -124,7 +124,7 @@ Instruções passo a passo para construir e executar o projeto.
 2. **Executar a aplicação Spring Boot**:
 
    ```bash
-   mvn -boot:runnspring
+   mvn spring-boot:run -Dspring-boot.run.profiles=dev
    ````
 
 
