@@ -76,7 +76,7 @@ Este documento detalha as estórias de usuário desenvolvidas para o desafio de 
 
 
 
-#SOLUÇÃO:
+# Solução
 
 Desenvolvi a solução utilizando o Spring-boot, seguindo as melhores práticas, principalmente os princípios do SOLID.
 O projeto ficou dividido em 3 camadas principais, sendo Controllers, Services e Repositories. As configurações, Handlers e Filters ficaram no package org.pitang.rest.challenge
