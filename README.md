@@ -89,6 +89,7 @@ Fiz os testes unitários dos Controllers, UserController e CarController. Neste 
 
 Criei as estruturas pedidos no **Requisito extra**, a de usuários esta no UserController(método usersBonusOrdered) e a de carros esta no CarController(método carsBonusOrdered). Utilizei streams e Lambda e a solução implementa todas as regras do requisito.
 
+Atualização: A branch da entrega do projeto é a master. Criei novos repositórios para continuar melhorando o projeto depois do periodo estabelecido para a entrega, a branch mais atual seria a release 1.0.1
 
 
 # Pitang API RESTful Desafio Técnico
