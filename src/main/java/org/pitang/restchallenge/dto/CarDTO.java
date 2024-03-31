@@ -1,5 +1,5 @@
 package org.pitang.restchallenge.dto;
 
-public record CarDTO(int year, String licensePlate, String model, String color, UserDTO user) {
+public record CarDto(int year, String licensePlate, String model, String color, UserDto user) {
 
 }

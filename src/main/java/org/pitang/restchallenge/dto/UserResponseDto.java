@@ -9,7 +9,7 @@ import org.pitang.restchallenge.model.CarEntity;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({"firstName", "lastName", "email", "birthday", "phone", "login", "password", "createdAt", "lastLogin", "cars"})
-public interface UserDetailResponse {
+public interface UserResponseDto {
 	
 	String getFirstName();
 	String getLastName();

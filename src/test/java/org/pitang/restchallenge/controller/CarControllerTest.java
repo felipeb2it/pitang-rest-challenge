@@ -16,7 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.pitang.restchallenge.dto.CarDTO;
+import org.pitang.restchallenge.dto.CarDto;
 import org.pitang.restchallenge.model.CarEntity;
 import org.pitang.restchallenge.service.CarService;
 import org.pitang.restchallenge.service.UserService;
@@ -79,7 +79,7 @@ public class CarControllerTest {
     @Test
     public void whenUpdateCar_thenReturnUpdatedCar() throws Exception {
         long carId = 1L;
-        CarDTO carDto = new CarDTO(1999, "abc", "abc", "abc", null);
+        CarDto carDto = new CarDto(1999, "abc", "abc", "abc", null);
         CarEntity updatedCarEntity = new CarEntity(/* inicialize conforme necessário */);
         given(carService.updateCar(carId, carDto)).willReturn(Optional.of(updatedCarEntity));
 

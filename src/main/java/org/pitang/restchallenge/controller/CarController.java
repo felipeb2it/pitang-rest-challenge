@@ -4,8 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.pitang.restchallenge.dto.CarDTO;
-import org.pitang.restchallenge.dto.UserDetailResponse;
+import org.pitang.restchallenge.dto.CarDto;
+import org.pitang.restchallenge.dto.UserResponseDto;
 import org.pitang.restchallenge.model.CarEntity;
 import org.pitang.restchallenge.service.CarService;
 import org.pitang.restchallenge.service.UserService;
@@ -33,7 +33,7 @@ public class CarController {
 	private UserService userService;
 	
 	@GetMapping("/me")
-	public ResponseEntity<UserDetailResponse> user(Authentication authentication) {
+	public ResponseEntity<UserResponseDto> user(Authentication authentication) {
 		String login = authentication.getName();
     	return ResponseEntity.ok(userService.findProjectedUserByLogin(login).get());
     }
@@ -57,7 +57,7 @@ public class CarController {
      * @return ResponseEntity do carro criado.
      */
     @PostMapping("/cars")
-    public ResponseEntity<CarEntity> createCar(@RequestBody CarDTO carDto, Authentication authentication){
+    public ResponseEntity<CarEntity> createCar(@RequestBody CarDto carDto, Authentication authentication){
     	String login = authentication.getName();
     	var user = userService.findUserByLogin(login);
     	return ResponseEntity.ok(carService.createCar(carDto, user.get()));
@@ -91,7 +91,7 @@ public class CarController {
      * @return ResponseEntity do carro atualizado.
      */
     @PutMapping("/cars/{id}")
-    public ResponseEntity<CarEntity> updateCar(@PathVariable Long id, @RequestBody CarDTO carDto) {
+    public ResponseEntity<CarEntity> updateCar(@PathVariable Long id, @RequestBody CarDto carDto) {
     	var updatedCar =  carService.updateCar(id, carDto);
     	return updatedCar.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

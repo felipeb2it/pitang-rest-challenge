@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.pitang.restchallenge.dto.LoginRequestDto;
-import org.pitang.restchallenge.dto.UserDTO;
+import org.pitang.restchallenge.dto.UserDto;
 import org.pitang.restchallenge.model.UserEntity;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -77,7 +77,7 @@ public class UserControllerTest {
     
     @Test
     void whenCreateUser_thenReturnCreatedUser() throws Exception {
-        UserDTO newUser = new UserDTO("newUser", "Oliveira", "newuser@example.com", LocalDate.of(1983, 10, 8), "6654654", "felipe", "felpcx", null);
+        UserDto newUser = new UserDto("newUser", "Oliveira", "newuser@example.com", LocalDate.of(1983, 10, 8), "6654654", "felipe", "felpcx", null);
         UserEntity savedUser = new UserEntity();
 
         given(userService.createUser(newUser)).willReturn(savedUser);
@@ -124,7 +124,7 @@ public class UserControllerTest {
     @Test
     void whenUpdateUser_thenUserShouldBeUpdated() throws Exception {
         long userId = 1L;
-        UserDTO userDto = new UserDTO("newUser", "Oliveira", "newuser@example.com", LocalDate.of(1983, 10, 8), "6654654", "felipe", "felpcx", null);
+        UserDto userDto = new UserDto("newUser", "Oliveira", "newuser@example.com", LocalDate.of(1983, 10, 8), "6654654", "felipe", "felpcx", null);
         UserEntity updatedUserEntity = new UserEntity(); // Suponha que UserEntity é apropriadamente instanciado
 
         given(userService.updateUser(eq(userId), any())).willReturn(Optional.of(updatedUserEntity));
@@ -140,7 +140,7 @@ public class UserControllerTest {
     @Test
     void whenUpdateUser_thenNotFound() throws Exception {
         long userId = 2L;
-        UserDTO userDto = new UserDTO("newUser", "Oliveira", "newuser@example.com", LocalDate.of(1983, 10, 8), "6654654", "felipe", "felpcx", null);
+        UserDto userDto = new UserDto("newUser", "Oliveira", "newuser@example.com", LocalDate.of(1983, 10, 8), "6654654", "felipe", "felpcx", null);
 
         given(userService.updateUser(eq(userId), any())).willReturn(Optional.empty());
 

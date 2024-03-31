@@ -3,7 +3,7 @@ package org.pitang.restchallenge.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.pitang.restchallenge.dto.CarDTO;
+import org.pitang.restchallenge.dto.CarDto;
 import org.pitang.restchallenge.model.CarEntity;
 import org.pitang.restchallenge.model.UserEntity;
 import org.pitang.restchallenge.repository.CarRepository;
@@ -32,7 +32,7 @@ public class CarService {
      * @param user O usuário ao qual o carro pertence.
      * @return CarEntity A entidade Car criada.
      */
-    public CarEntity createCar(CarDTO carDto, UserEntity user) {
+    public CarEntity createCar(CarDto carDto, UserEntity user) {
     	CarEntity car = new CarEntity();
     	car.setColor(carDto.color());
     	car.setLicensePlate(carDto.licensePlate());
@@ -70,7 +70,7 @@ public class CarService {
      * @return Optional A entidade Car atualizada caso exista.
      * @throws EntityNotFoundException Se nenhum carro com o ID fornecido for encontrado.
      */
-    public Optional<CarEntity> updateCar(Long id, CarDTO carDto) {
+    public Optional<CarEntity> updateCar(Long id, CarDto carDto) {
         return carRepository.findById(id).map(car -> {
         	Optional.ofNullable(carDto.color()).ifPresent(car::setColor);
         	Optional.ofNullable(carDto.licensePlate()).ifPresent(car::setLicensePlate);
