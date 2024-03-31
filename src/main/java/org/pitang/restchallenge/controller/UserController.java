@@ -1,19 +1,16 @@
 package org.pitang.restchallenge.controller;
 
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-
-import javax.crypto.SecretKey;
 
 import org.pitang.restchallenge.dto.ErrorMessagesDto;
 import org.pitang.restchallenge.dto.LoginRequestDto;
-import org.pitang.restchallenge.dto.UserDTO;
+import org.pitang.restchallenge.dto.UserDto;
 import org.pitang.restchallenge.model.CarEntity;
 import org.pitang.restchallenge.model.UserEntity;
+import org.pitang.restchallenge.service.JwtService;
 import org.pitang.restchallenge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import jakarta.validation.Valid;
 
 
@@ -41,16 +36,15 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	record JwtResponse(String token) {}
+	@Autowired
+	private JwtService jwtService;
 	
-	@Value("${pitang.jwt.secret}")
-	private String secretKey;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDto loginRequest) {
     	boolean validUser = userService.findUserByLoginAndCheckPass(loginRequest);
     	if(validUser) {
-    		return ResponseEntity.ok().body(new JwtResponse(generateJwtToken(loginRequest.login())));
+    		return ResponseEntity.ok().body(jwtService.generateJwtToken(loginRequest.login()));
     	} else {
     		ErrorMessagesDto error = new ErrorMessagesDto("Invalid login or password", HttpStatus.NOT_FOUND.value());
     		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
@@ -58,18 +52,6 @@ public class UserController {
         
     }
     
-    public String generateJwtToken(String username) {
-        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
-
-        String jwt = Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + 3600000))
-                .signWith(key)
-                .compact();
-
-        return jwt;
-    }
 	
     /**
      * Endpoint para listar todos os usuários cadastrados no sistema.
@@ -88,7 +70,7 @@ public class UserController {
      * @return ResponseEntity com o usuário criado e o status HTTP.
      */
     @PostMapping("/users")
-    public ResponseEntity<?> createUser(@RequestBody @Valid UserDTO userDto){
+    public ResponseEntity<?> createUser(@RequestBody @Valid UserDto userDto){
     	if(userService.findByLoginAndCheck(userDto.login())) {
     		ErrorMessagesDto error = new ErrorMessagesDto("Login already exists", HttpStatus.BAD_REQUEST.value());
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
@@ -128,7 +110,7 @@ public class UserController {
      * @return ResponseEntity com o usuário atualizado e o status HTTP.
      */
     @PutMapping("/users/{id}")
-    public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserDTO userDto) {
+    public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
     	var updatedUser =  userService.updateUser(id, userDto);
     	return updatedUser.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.pitang.restchallenge.dto.CarDTO;
+import org.pitang.restchallenge.dto.CarDto;
 import org.pitang.restchallenge.dto.LoginRequestDto;
-import org.pitang.restchallenge.dto.UserDTO;
-import org.pitang.restchallenge.dto.UserDetailResponse;
+import org.pitang.restchallenge.dto.UserDto;
+import org.pitang.restchallenge.dto.UserResponseDto;
 import org.pitang.restchallenge.model.CarEntity;
 import org.pitang.restchallenge.model.UserEntity;
 import org.pitang.restchallenge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
@@ -21,10 +25,19 @@ import org.springframework.stereotype.Service;
  * Encapsula a lógica de negócio relacionada a usuários.
  */
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	
+	
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // Aqui, você buscaria o usuário do seu banco de dados
+    	return userRepository.findByLogin(username).map(user ->
+    		new User(user.getLogin(), user.getPassword(), new ArrayList<>())).orElseThrow(() -> new UsernameNotFoundException(""));
+    }
 	
 	
     /**
@@ -43,7 +56,7 @@ public class UserService {
      * @param userDto Objeto usuário a ser persistido.
      * @return O usuário persistido.
      */
-    public UserEntity createUser(UserDTO userDto) {
+    public UserEntity createUser(UserDto userDto) {
     	UserEntity user = new UserEntity();
     	user.setFirstName(userDto.firstName());
     	user.setLastName(userDto.lastName());
@@ -55,7 +68,7 @@ public class UserService {
     	
     	if(userDto.cars() != null && !userDto.cars().isEmpty()) {
     		List<CarEntity> cars = new ArrayList<>();
-    		for(CarDTO carDto : userDto.cars()) {
+    		for(CarDto carDto : userDto.cars()) {
     			CarEntity car = new CarEntity();
     			car.setColor(carDto.color());
     			car.setLicensePlate(carDto.licensePlate());
@@ -90,7 +103,7 @@ public class UserService {
      * @param userDto Objeto do usuário a ser atualizado.
      * @return Optional com o usuário atualizado.
      */
-    public Optional<UserEntity> updateUser(Long id, UserDTO userDto) {
+    public Optional<UserEntity> updateUser(Long id, UserDto userDto) {
         return userRepository.findById(id).map(user -> {
         	Optional.ofNullable(userDto.firstName()).ifPresent(user::setFirstName);
         	Optional.ofNullable(userDto.lastName()).ifPresent(user::setLastName);
@@ -110,7 +123,7 @@ public class UserService {
     	return userRepository.findByLogin(login);
     }
     
-    public Optional<UserDetailResponse> findProjectedUserByLogin(String login) {
+    public Optional<UserResponseDto> findProjectedUserByLogin(String login) {
     	return userRepository.findProjectedByLogin(login);
     }
     
