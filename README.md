@@ -1,4 +1,4 @@
-**Atualização 31/03/2024: A branch da entrega do projeto é a master. Criei novos repositórios para continuar melhorando o projeto depois do periodo estabelecido para a entrega, a branch mais atual seria a release 1.0.2 mas a master ja tem os requisitos solicitados**
+**Atualização 31/03/2024: A branch da entrega do projeto é a master. Criei novos repositórios para continuar melhorando o projeto depois do periodo estabelecido para a entrega, a branch mais atual seria a release/1.0.2 mas a master ja tem os requisitos solicitados**
 
 # Estórias de Usuário - Pitang API RESTful Desafio Técnico
 
