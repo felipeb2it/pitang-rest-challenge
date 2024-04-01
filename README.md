@@ -1,3 +1,5 @@
+**Atualização 31/03/2024: A branch da entrega do projeto é a master. Criei novos repositórios para continuar melhorando o projeto depois do periodo estabelecido para a entrega, a branch mais atual seria a release 1.0.2 mas a master ja tem os requisitos solicitados**
+
 # Estórias de Usuário - Pitang API RESTful Desafio Técnico
 
 Este documento detalha as estórias de usuário desenvolvidas para o desafio de criação de uma API RESTful para um sistema de usuários e carros.
@@ -88,8 +90,6 @@ Utilizei anotações para validação de campos e um Validation Handler para cus
 Fiz os testes unitários dos Controllers, UserController e CarController. Neste projeto resolvi me dedicar a cumprir com todas as funcionalidades e por isso a cobertura de código esta baixa mas em grandes projetos é essencial termos uma cobertura de código de pelo menos 80%.
 
 Criei as estruturas pedidos no **Requisito extra**, a de usuários esta no UserController(método usersBonusOrdered) e a de carros esta no CarController(método carsBonusOrdered). Utilizei streams e Lambda e a solução implementa todas as regras do requisito.
-
-Atualização: A branch da entrega do projeto é a master. Criei novos repositórios para continuar melhorando o projeto depois do periodo estabelecido para a entrega, a branch mais atual seria a release 1.0.1
 
 
 # Pitang API RESTful Desafio Técnico
